@@ -48,10 +48,10 @@ defmodule Livebook.MixProject do
   #
   defp deps do
     [
-      {:phoenix, "~> 1.5"},
-      {:phoenix_html, "~> 3.0"},
+      {:phoenix, "~> 1.6"},
+      {:phoenix_html, ">= 3.0.4"},
       {:phoenix_live_view, "~> 0.16.0"},
-      {:phoenix_live_dashboard, "~> 0.5.0"},
+      {:phoenix_live_dashboard, "~> 0.5"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:jason, "~> 1.0"},
