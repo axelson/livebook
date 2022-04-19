@@ -86,7 +86,7 @@ defmodule Livebook.MixProject do
   #
   defp deps do
     [
-      {:phoenix, "~> 1.5"},
+      {:phoenix, "1.6.7"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_view, "~> 0.17.3"},
       {:phoenix_live_dashboard, "~> 0.6.0"},
@@ -96,7 +96,7 @@ defmodule Livebook.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:earmark_parser, "~> 1.4"},
       {:castore, "~> 0.1.0"},
-      {:aws_signature, "~> 0.2.0"},
+      {:aws_signature, "~> 0.3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:floki, ">= 0.27.0", only: :test},
       {:bypass, "~> 2.1", only: :test}
