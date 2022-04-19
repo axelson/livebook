@@ -18,7 +18,7 @@ defmodule Livebook.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: with_lock(target_deps(Mix.target()) ++ deps()),
+      deps: target_deps(Mix.target()) ++ deps(),
       escript: escript(),
       package: package(),
       default_release: :livebook,
@@ -86,7 +86,7 @@ defmodule Livebook.MixProject do
   #
   defp deps do
     [
-      {:phoenix, "~> 1.5"},
+      {:phoenix, "~> 1.6"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_view, "~> 0.17.3"},
       {:phoenix_live_dashboard, "~> 0.6.0"},
@@ -96,7 +96,7 @@ defmodule Livebook.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:earmark_parser, "~> 1.4"},
       {:castore, "~> 0.1.0"},
-      {:aws_signature, "~> 0.2.0"},
+      {:aws_signature, "~> 0.3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:floki, ">= 0.27.0", only: :test},
       {:bypass, "~> 2.1", only: :test}
@@ -106,22 +106,22 @@ defmodule Livebook.MixProject do
   defp target_deps(:app), do: [{:app_builder, path: "app_builder"}]
   defp target_deps(_), do: []
 
-  @lock (with {:ok, contents} <- File.read("mix.lock"),
-              {:ok, quoted} <- Code.string_to_quoted(contents, warn_on_unnecessary_quotes: false),
-              {%{} = lock, _binding} <- Code.eval_quoted(quoted, []) do
-           for {dep, hex} when elem(hex, 0) == :hex <- lock,
-               do: {dep, elem(hex, 2)},
-               into: %{}
-         else
-           _ -> %{}
-         end)
+  # @lock (with {:ok, contents} <- File.read("mix.lock"),
+  #             {:ok, quoted} <- Code.string_to_quoted(contents, warn_on_unnecessary_quotes: false),
+  #             {%{} = lock, _binding} <- Code.eval_quoted(quoted, []) do
+  #          for {dep, hex} when elem(hex, 0) == :hex <- lock,
+  #              do: {dep, elem(hex, 2)},
+  #              into: %{}
+  #        else
+  #          _ -> %{}
+  #        end)
 
-  defp with_lock(deps) do
-    for dep <- deps do
-      name = elem(dep, 0)
-      put_elem(dep, 1, @lock[name] || elem(dep, 1))
-    end
-  end
+  # defp with_lock(deps) do
+  #   for dep <- deps do
+  #     name = elem(dep, 0)
+  #     put_elem(dep, 1, @lock[name] || elem(dep, 1))
+  #   end
+  # end
 
   ## Releases
 
