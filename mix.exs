@@ -96,7 +96,7 @@ defmodule Livebook.MixProject do
       {:castore, "~> 0.1.0"},
       {:aws_signature, "~> 0.3.0"},
       {:ecto, "~> 3.9.0"},
-      {:phoenix_ecto, "~> 4.4.0"},
+      {:phoenix_ecto, "~> 4.0"},
       {:mint_web_socket, "~> 1.0.0"},
       {:protobuf, "~> 0.8.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
